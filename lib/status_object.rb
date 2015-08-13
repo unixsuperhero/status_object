@@ -9,8 +9,12 @@ module StatusObject
         @name = self.class.name_for(id)
       end
 
+      def text
+        name.tr(*'_ '.chars)
+      end
+
       def display
-        name.split(?_).map{|w| w[0] = w[0].upcase; w }.join(' ')
+        text.gsub(/\b\w/,&:upcase)
       end
 
       def ==(other_status)
