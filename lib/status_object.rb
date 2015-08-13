@@ -91,6 +91,10 @@ module StatusObject
           name_map.fetch(id, nil).to_s
         end
 
+        def text_for(id=ids.first)
+          new(id).text
+        end
+
         def display_for(id=ids.first)
           new(id).display
         end
