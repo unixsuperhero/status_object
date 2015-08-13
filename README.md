@@ -90,7 +90,7 @@ This class will have the following Class Methods:
         ready      = ExampleStatus.display_for(1)      # => "Ready"
          done      = ExampleStatus.display_for(2)      # => "Done"
 
-This class will have the following Class Methods:
+This class will have the following Instance Methods:
 
     # INSTANCE METHODS
     # ----------------
