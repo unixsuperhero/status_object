@@ -17,7 +17,7 @@ end
 
 # helpers:
 
-all            = ExampleStatus.all                 # => [#<ExampleStatus:0x007fd5f4972e18 @id=0, @name="not_ready">, #<ExampleStatus:0x007fd5f4972da0 @id=1, @name="ready">, #<ExampleStatus:0x007fd5f4972d50 @id=2, @name="done">] # !> assigned but unused variable - all
+all            = ExampleStatus.all                 # => [#<ExampleStatus:0x007f9789113be0 @id=0, @name="not_ready">, #<ExampleStatus:0x007f9789113a78 @id=1, @name="ready">, #<ExampleStatus:0x007f9789113a28 @id=2, @name="done">] # !> assigned but unused variable - all
 ids            = ExampleStatus.ids                 # => [0, 1, 2] # !> assigned but unused variable - ids
 names          = ExampleStatus.names               # => ["not_ready", "ready", "done"] # !> assigned but unused variable - names
 
@@ -33,15 +33,15 @@ ExampleStatus::DONE                                # => 2
 
 # constructor:
 
-not_ready      = ExampleStatus.new(0)              # => #<ExampleStatus:0x007fd5f496bc30 @id=0, @name="not_ready">
-    ready      = ExampleStatus.new(1)              # => #<ExampleStatus:0x007fd5f496b190 @id=1, @name="ready">
-     done      = ExampleStatus.new(2)              # => #<ExampleStatus:0x007fd5f496a5b0 @id=2, @name="done">
+not_ready      = ExampleStatus.new(0)              # => #<ExampleStatus:0x007f97891030b0 @id=0, @name="not_ready">
+    ready      = ExampleStatus.new(1)              # => #<ExampleStatus:0x007f97890f9088 @id=1, @name="ready">
+     done      = ExampleStatus.new(2)              # => #<ExampleStatus:0x007f978891da58 @id=2, @name="done">
 
 # factory:
 
-not_ready      = ExampleStatus.not_ready           # => #<ExampleStatus:0x007fd5f4969a48 @id=0, @name="not_ready">
-    ready      = ExampleStatus.ready               # => #<ExampleStatus:0x007fd5f4969160 @id=1, @name="ready">
-     done      = ExampleStatus.done                # => #<ExampleStatus:0x007fd5f496a628 @id=2, @name="done">
+not_ready      = ExampleStatus.not_ready           # => #<ExampleStatus:0x007f978891fbf0 @id=0, @name="not_ready">
+    ready      = ExampleStatus.ready               # => #<ExampleStatus:0x007f97890f03c0 @id=1, @name="ready">
+     done      = ExampleStatus.done                # => #<ExampleStatus:0x007f97890e9e30 @id=2, @name="done">
 
 # grab an id:
 
@@ -51,15 +51,15 @@ not_ready      = ExampleStatus.not_ready_id        # => 0
 
 # by_id:
 
-not_ready      = ExampleStatus.by_id(0)            # => #<ExampleStatus:0x007fd5f4952e38 @id=0, @name="not_ready">
-    ready      = ExampleStatus.by_id(1)            # => #<ExampleStatus:0x007fd5f4952e60 @id=1, @name="ready">
-     done      = ExampleStatus.by_id(2)            # => #<ExampleStatus:0x007fd5f49487f8 @id=2, @name="done">
+not_ready      = ExampleStatus.by_id(0)            # => #<ExampleStatus:0x007f9788915df8 @id=0, @name="not_ready">
+    ready      = ExampleStatus.by_id(1)            # => #<ExampleStatus:0x007f978890cf78 @id=1, @name="ready">
+     done      = ExampleStatus.by_id(2)            # => #<ExampleStatus:0x007f9788907050 @id=2, @name="done">
 
 # by_name:
 
-not_ready      = ExampleStatus.by_name(:not_ready) # => #<ExampleStatus:0x007fd5f4942a38 @id=0, @name="not_ready">
-    ready      = ExampleStatus.by_name(:ready)     # => #<ExampleStatus:0x007fd5f4942330 @id=1, @name="ready">
-     done      = ExampleStatus.by_name(:done)      # => #<ExampleStatus:0x007fd5f4938358 @id=2, @name="done">
+not_ready      = ExampleStatus.by_name(:not_ready) # => #<ExampleStatus:0x007f9788905688 @id=0, @name="not_ready">
+    ready      = ExampleStatus.by_name(:ready)     # => #<ExampleStatus:0x007f97888fde60 @id=1, @name="ready">
+     done      = ExampleStatus.by_name(:done)      # => #<ExampleStatus:0x007f97888cf830 @id=2, @name="done">
 
 # id_for:
 
@@ -73,6 +73,12 @@ not_ready      = ExampleStatus.name_for(0)         # => "not_ready"
     ready      = ExampleStatus.name_for(1)         # => "ready"
      done      = ExampleStatus.name_for(2)         # => "done"
 
+# text_for:
+
+not_ready      = ExampleStatus.text_for(0)         # => "not ready"
+    ready      = ExampleStatus.text_for(1)         # => "ready"
+     done      = ExampleStatus.text_for(2)         # => "done"
+
 # display_for:
 
 not_ready      = ExampleStatus.display_for(0)      # => "Not Ready"
@@ -83,9 +89,9 @@ not_ready      = ExampleStatus.display_for(0)      # => "Not Ready"
 # INSTANCE METHODS
 # ----------------
 
-not_ready      = ExampleStatus.not_ready           # => #<ExampleStatus:0x007fd5f4901970 @id=0, @name="not_ready">
-    ready      = ExampleStatus.ready               # => #<ExampleStatus:0x007fd5f48fb6d8 @id=1, @name="ready">
-     done      = ExampleStatus.done                # => #<ExampleStatus:0x007fd5f48faf80 @id=2, @name="done">
+not_ready      = ExampleStatus.not_ready           # => #<ExampleStatus:0x007f97890db6c8 @id=0, @name="not_ready">
+    ready      = ExampleStatus.ready               # => #<ExampleStatus:0x007f97890db088 @id=1, @name="ready">
+     done      = ExampleStatus.done                # => #<ExampleStatus:0x007f97890daae8 @id=2, @name="done">
 
 not_ready.class                                    # => ExampleStatus
 
