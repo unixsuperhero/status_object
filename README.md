@@ -84,6 +84,12 @@ This class will have the following Class Methods:
         ready      = ExampleStatus.name_for(1)         # => "ready"
          done      = ExampleStatus.name_for(2)         # => "done"
 
+    # text_for:
+
+    not_ready      = ExampleStatus.text_for(0)         # => "not ready"
+        ready      = ExampleStatus.text_for(1)         # => "ready"
+         done      = ExampleStatus.text_for(2)         # => "done"
+
     # display_for:
 
     not_ready      = ExampleStatus.display_for(0)      # => "Not Ready"
@@ -112,6 +118,10 @@ This class will have the following Instance Methods:
     not_ready.name                                     # => "not_ready"
         ready.name                                     # => "ready"
          done.name                                     # => "done"
+
+    not_ready.text                                     # => "not ready"
+        ready.text                                     # => "ready"
+        done.text                                      # => "done"
 
     not_ready.display                                  # => "Not Ready"
         ready.display                                  # => "Ready"
