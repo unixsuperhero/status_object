@@ -121,7 +121,7 @@ This class will have the following Instance Methods:
 
     not_ready.text                                     # => "not ready"
         ready.text                                     # => "ready"
-        done.text                                      # => "done"
+         done.text                                     # => "done"
 
     not_ready.display                                  # => "Not Ready"
         ready.display                                  # => "Ready"
