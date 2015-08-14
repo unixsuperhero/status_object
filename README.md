@@ -1,7 +1,29 @@
 
 # Status Object
 
-## How It Works
+## NEW METHOD: How It Works
+
+When StatusObject is included in a class, it adds an `#add_status` DSL which
+ultimately looks a lot cleaner than the original method:
+
+## Example:
+
+This is the same example as the one in OLD METHOD, it was just created using different
+styles.
+
+    require './lib/status_object'
+
+    class ExampleStatus
+      include StatusObject
+
+      add_status 0, :not_ready
+      add_status 1, :ready
+      add_status 2, :done
+    end
+
+
+
+## OLD METHOD: How It Works
 
 Create a class.  Add a constant called `VALUES` and set it to a hash with
 symbols for keys and their corresponding integer as the values.  Then, include
