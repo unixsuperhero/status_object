@@ -1,6 +1,11 @@
 
 # Status Object
 
+## TODO
+
+use a block for adding statuses.  this way, constants like VALUES are not
+constantly being destroyed and rebuilt over and over
+
 ## NEW METHOD: How It Works
 
 When StatusObject is included in a class, it adds an `#add_status` DSL which
