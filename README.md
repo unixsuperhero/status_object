@@ -7,9 +7,10 @@ meaningful that just a bunch of magic numbers.
 * Instead of littering your code with magic numbers:
   * `car.status_id = 2`,
   * `car.status_id = 3 if car.status_id == 2`,
-* Easily associate descriptive words with each value:
-  * `car.status = :safe if car.status.parked?`
-  * `car.status = 'safe' # => car.status_id == 5`
+* Interact with the `#*_id` attribute using a proxy attribute that is more
+  flexible and descriptive:
+  * `car.status = :safe if car.status.parked?` actually updates `#status_id`
+  * `car.status = 'safe'` also updates `#status_id`
 
 ## Example Usage:
 
