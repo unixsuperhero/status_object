@@ -1,6 +1,17 @@
 class Car < ActiveRecord::Base
   include KeyValue::ActiveRecord
 
+  # Car model:
+  # ---------
+  #
+  # id                 :integer
+  # report_status_id   :integer
+  # ...
+  # created_at         :datetime
+  # updated_at         :datetime
+  #
+
+  # access <column/attribute>, <using_this>,   <defined_by_this_key_value_class>
   key_value :report_status_id, :report_status, CarReportStatus
 end
 
