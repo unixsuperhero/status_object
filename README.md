@@ -1,6 +1,16 @@
 
 # Status Object
 
+Quickly/easily create objects associated with an `'*_id` attribute that are more
+meaningful that just a bunch of magic numbers.
+
+* Instead of littering your code with magic numbers:
+  * `car.status_id = 2`,
+  * `car.status_id = 3 if car.status_id == 2`,
+* Easily associate descriptive words with each value:
+  * `car.status = :safe if car.status.parked?`
+  * `car.status = 'safe' # => car.status_id == 5`
+
 ## Example Usage:
 
     require './lib/key_value'
