@@ -13,7 +13,31 @@ class KeyValue
             end
           CODE
         end
+
+        def self.handle_key column_name, settings={}
+          handle_key_as = settings[:as]
+          value_object = settings[:using]
+
+          class_eval <<-CODE
+            def #{handle_key_as}
+              #{value_object}.for( self.#{column_name} )
+            end
+
+            def #{handle_key_as}=(val)
+              self.#{column_name} = #{value_object}.for(val).id
+            end
+          CODE
+        end
+        alias_method :handle_column, :handle_key
       end
     end
   end
 end
+
+#
+# class Car < ActiveRecord::Base
+#   include KeyValue::ActiveRecord
+#
+#   handle_key :report_status_id, as: :report_status, using: ReportStatus
+# end
+#
