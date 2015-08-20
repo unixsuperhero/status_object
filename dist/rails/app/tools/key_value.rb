@@ -1,13 +1,6 @@
 
 # ------- lib/key_value.rb -------
 
-
-class KeyValue
-end
-
-require_relative 'key_value/record'
-require_relative 'key_value/active_record'
-
 class KeyValue
   ALL = []
 
@@ -83,6 +76,7 @@ class KeyValue
 end
 
 
+
 # ------- lib/key_value/active_record.rb -------
 
 class KeyValue
@@ -128,4 +122,5 @@ end
 #   handle_key :report_status_id, as: :report_status, using: ReportStatus
 # end
 #
+
 
