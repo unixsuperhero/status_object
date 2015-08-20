@@ -1,7 +1,3 @@
-
-class KeyValue
-end
-
 require_relative 'key_value/record'
 require_relative 'key_value/active_record'
 

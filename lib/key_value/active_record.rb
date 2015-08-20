@@ -41,3 +41,4 @@ end
 #   handle_key :report_status_id, as: :report_status, using: ReportStatus
 # end
 #
+
