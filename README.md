@@ -60,50 +60,52 @@ meaningful that just a bunch of magic numbers.
 ## With the ActiveRecord adapter => `lib/key_value/active_record.rb`
 
 
-`lib/car_report_status.rb`:
+`lib/car_status.rb`:
 
-    class CarReportStatus < KeyValue
-      add_record 0, :walk_report
-      add_record 1, :hands_on
-      add_record 2, :trade_log
-      add_record 3, :work_log
-      add_record 4, :completed
-      add_record 5, :no_report
-      add_record 6, :abandoned
+    class ProgressStatus < KeyValue
+      add_record 0, :added
+      add_record 1, :started
+      add_record 2, :finished
     end
 
 
 `app/models/car.rb`:
 
-    class Car < ActiveRecord::Base
+    class SomeObject < ActiveRecord::Base
       include KeyValue::ActiveRecord
 
-      key_value :report_status_id, :report_status, CarReportStatus
+      key_value :progress_status_id, :progress_status, ProgressStatus
+
+      # ...or...
+
+      handle_column :progress_status_id, as: :progress_status, using: ProgressStatus
     end
 
     #
-    # Adds #report_status and #report_status=
-    # ---------------------------------------
+    # Adds #progress_status and #progress_status=
+    # -------------------------------------------
     #
-    # car = Car.first
-    # car.report_status_id             # => 3
+    # some_object = SomeObject.first
+    # some_object.progress_status_id             # => 1
     #
-    # car.report_status.id             # => 3
-    # car.report_status.title          # => "Work Log"
-    # car.report_status.name           # => :work_log
+    # some_object.progress_status.id             # => 1
+    # some_object.progress_status.title          # => "Added"
+    # some_object.progress_status.name           # => :added
     #
-    # car.report_status.work_log?      # => true
-    # car.report_status.completed?     # => false
+    # some_object.progress_status.added?      # => true
+    # some_object.progress_status.finished?     # => false
     #
-    # car.report_status = :completed
+    # # These do the same thing:
+    # some_object.progress_status = 2
+    # some_object.progress_status = :finished
     #
-    # car.report_status_id             # => 4
+    # some_object.progress_status_id             # => 2
     #
-    # car.report_status.id             # => 4
-    # car.report_status.title          # => "Completed"
+    # some_object.progress_status.id             # => 2
+    # some_object.progress_status.title          # => "Finished"
     #
-    # car.report_status.work_log?      # => false
-    # car.report_status.completed?     # => true
+    # some_object.progress_status.added?      # => false
+    # some_object.progress_status.finished?     # => true
     #
 
 
