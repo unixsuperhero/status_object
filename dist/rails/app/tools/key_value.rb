@@ -80,6 +80,9 @@ end
 # ------- lib/key_value/active_record.rb -------
 
 class KeyValue
+  class UnknownValue < Exception
+  end
+
   module ActiveRecord
     def self.included(base)
       base.class_eval do
@@ -105,7 +108,13 @@ class KeyValue
             end
 
             def #{handle_key_as}=(val)
-              self.#{column_name} = #{value_object}.for(val).id
+              matching_value = #{value_object}.for(val)
+
+              if matching_value.present?
+                self.#{column_name} = matching_value.id
+              else
+                raise KeyValue::UnknownValue, "Unable to match '\#{val}' with a matching key"
+              end
             end
           CODE
         end
