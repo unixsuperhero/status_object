@@ -14,5 +14,5 @@
 # echo
 # echo
 
-find lib -type f | gtac | while read f; do echo; printf '# ------- %s -------\n' $f; echo; cat $f; echo; done | sed '/^require_relative [^[:space:]]key_value/,/^$/d' | tee dist/rails/app/tools/key_value.rb
+find lib -type f | grep -v 'enum_type' | gtac | while read f; do echo; printf '# ------- %s -------\n' $f; echo; cat $f; echo; done | sed '/^require_relative [^[:space:]]key_value/,/^$/d' | tee dist/rails/app/tools/enum_object.rb
 
