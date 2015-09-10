@@ -1,4 +1,4 @@
-class KeyValue
+class EnumObject
   class Record
     attr_accessor :id, :key, :value, :name
     attr_accessor :display, :title

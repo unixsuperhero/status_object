@@ -1,7 +1,7 @@
 require_relative 'key_value/record'
 require_relative 'key_value/active_record'
 
-class KeyValue
+class EnumObject
   ALL = []
 
   def self.add_record key, val, opts={}, &block
@@ -25,6 +25,10 @@ class KeyValue
     ALL.find do |record|
       record.matches?(value)
     end
+  end
+
+  def self.id_for(value)
+    self.for(value).id
   end
 end
 

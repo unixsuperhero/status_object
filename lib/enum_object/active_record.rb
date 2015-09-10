@@ -1,4 +1,4 @@
-class KeyValue
+class EnumObject
   class UnknownValue < Exception
   end
 
@@ -17,8 +17,8 @@ class KeyValue
           CODE
         end
 
-        def self.handle_key column_name, settings={}
-          handle_key_as = settings[:as]
+        def self.enum_attribute column_name, settings={}
+          handle_key_as = settings[:as] || settings[:proxy]
           value_object = settings[:using]
 
           class_eval <<-CODE
@@ -32,12 +32,75 @@ class KeyValue
               if matching_value.present?
                 self.#{column_name} = matching_value.id
               else
-                raise KeyValue::UnknownValue, "Unable to match '\#{val}' with a matching key"
+                raise EnumObject::UnknownValue, "Unable to match '\#{val}' with a matching key"
               end
             end
           CODE
         end
-        alias_method :handle_column, :handle_key
+
+        def self.enum_column column_name, settings={}
+          handle_key_as = settings[:as] || settings[:proxy]
+          value_object = settings[:using]
+
+          class_eval <<-CODE
+            def #{handle_key_as}
+              #{value_object}.for( self.#{column_name} )
+            end
+
+            def #{handle_key_as}=(val)
+              matching_value = #{value_object}.for(val)
+
+              if matching_value.present?
+                self.#{column_name} = matching_value.id
+              else
+                raise EnumObject::UnknownValue, "Unable to match '\#{val}' with a matching key"
+              end
+            end
+          CODE
+        end
+
+        def self.handle_column column_name, settings={}
+          handle_key_as = settings[:as] || settings[:proxy]
+          value_object = settings[:using]
+
+          class_eval <<-CODE
+            def #{handle_key_as}
+              #{value_object}.for( self.#{column_name} )
+            end
+
+            def #{handle_key_as}=(val)
+              matching_value = #{value_object}.for(val)
+
+              if matching_value.present?
+                self.#{column_name} = matching_value.id
+              else
+                raise EnumObject::UnknownValue, "Unable to match '\#{val}' with a matching key"
+              end
+            end
+          CODE
+        end
+
+        def self.handle_key column_name, settings={}
+          handle_key_as = settings[:as] || settings[:proxy]
+          value_object = settings[:using]
+          value_object = settings[:using]
+
+          class_eval <<-CODE
+            def #{handle_key_as}
+              #{value_object}.for( self.#{column_name} )
+            end
+
+            def #{handle_key_as}=(val)
+              matching_value = #{value_object}.for(val)
+
+              if matching_value.present?
+                self.#{column_name} = matching_value.id
+              else
+                raise EnumObject::UnknownValue, "Unable to match '\#{val}' with a matching key"
+              end
+            end
+          CODE
+        end
       end
     end
   end
@@ -45,7 +108,7 @@ end
 
 #
 # class Car < ActiveRecord::Base
-#   include KeyValue::ActiveRecord
+#   include EnumObject::ActiveRecord
 #
 #   handle_key :report_status_id, as: :report_status, using: ReportStatus
 # end
